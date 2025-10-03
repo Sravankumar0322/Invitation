@@ -1,461 +1,221 @@
-<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Jonny & Siri — Engagement Invitation</title>
-
-  <!-- Google font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    :root{
-      --bg: #FCFBFA;
-      --card: #ffffff;
-      --accent: #2b6cb0; /* blue */
-      --accent-2:#9f7aea; /* purple */
-      --muted: #6b7280;
-      --glass: rgba(255,255,255,0.6);
-      --radius: 16px;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wedding Invitation</title>
+<link href="https://fonts.googleapis.com/css2?family=Indie+Flower&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #FBEAE2;
+    color: #333;
+  }
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+  }
+  .container {
+    max-width: 600px;
+    margin: auto;
+    background-color: #fff;
+  }
+  h1, h2, h3, p {
+    margin: 10px 0;
+    padding: 0;
+  }
+  .center {
+    text-align: center;
+  }
+  .spacer {
+    height: 30px;
+  }
+  @media screen and (max-width: 600px) {
+    .container {
+      width: 100% !important;
+      padding: 0 10px !important;
     }
-
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      background:
-        radial-gradient(circle at 10% 10%, rgba(43,108,176,0.06), transparent 15%),
-        linear-gradient(180deg, #ffffff 0%, var(--bg) 100%);
-      color:#111827;
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
-      padding:28px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+    .two-column {
+      display: block !important;
     }
-
-    .wrap{
-      width:100%;
-      max-width:1100px;
-      background:var(--card);
-      border-radius:20px;
-      box-shadow: 0 10px 30px rgba(15,23,42,0.08);
-      overflow:hidden;
-      display:grid;
-      grid-template-columns: 1fr 420px;
-      gap: 0;
-      min-height:600px;
+    .two-column td {
+      width: 100% !important;
+      display: block !important;
     }
+  }
+    .time-circle {
+    background-color: #234C6A;
+    border: 3px solid #86B0BD;
+    border-radius: 50%;
+    width: 90px;
+    height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    color: #ffffff;
+    animation: pulse 1.5s infinite;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  .time-circle span {
+    font-size: 22px;
+    display: inline-block;
+    animation: flip 0.5s ease;
+  }
+  .label {
+    font-size: 12px;
+    margin-top: 5px;
+    color: #ffffff;
+  }
 
-    /* left hero */
-    .hero{
-      padding:48px;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      gap:18px;
-      position:relative;
-      overflow:visible;
-    }
+  /* Pulse animation */
+  @keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+  }
 
-    .badge{
-      display:inline-flex;
-      gap:10px;
-      align-items:center;
-      background:linear-gradient(90deg,var(--accent),var(--accent-2));
-      color:white;
-      padding:8px 14px;
-      border-radius:999px;
-      font-weight:700;
-      letter-spacing:.2px;
-      box-shadow: 0 6px 18px rgba(43,108,176,0.12);
-      width:max-content;
-    }
+  /* Flip animation for numbers */
+  @keyframes flip {
+    0% { transform: rotateX(90deg); opacity: 0; }
+    50% { transform: rotateX(-10deg); opacity: 0.5; }
+    100% { transform: rotateX(0deg); opacity: 1; }
+  }
 
-    h1{
-      margin:0;
-      font-size:44px;
-      line-height:1.02;
-      letter-spacing:-0.6px;
-      color:#0f172a;
-      font-weight:800;
-    }
-
-    p.lead{
-      margin:0;
-      color:var(--muted);
-      font-size:16px;
-      max-width:70%;
-    }
-
-    .date{
-      margin-top:12px;
-      color:#111827;
-      font-weight:600;
-      font-size:15px;
-      display:flex;
-      gap:14px;
-      align-items:center;
-    }
-
-    .date .meta{
-      background:rgba(15,23,42,0.04);
-      padding:8px 12px;
-      border-radius:999px;
-      font-weight:600;
-      font-size:14px;
-    }
-
-    /* visual decorative circles */
-    .orbit{
-      position:absolute;
-      left:-60px;
-      top:40px;
-      width:300px;
-      height:300px;
-      border-radius:50%;
-      border:6px dashed rgba(43,108,176,0.12);
-      transform:rotate(-15deg);
-      z-index:0;
-    }
-
-    .couple-photo{
-      width:170px;
-      height:170px;
-      border-radius:14px;
-      box-shadow: 0 8px 30px rgba(15,23,42,0.08);
-      object-fit:cover;
-      border:5px solid white;
-      position:absolute;
-      right:-40px;
-      bottom:-40px;
-      z-index:2;
-      background:linear-gradient(180deg,var(--accent),var(--accent-2));
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      color:white;
-      font-weight:700;
-      font-size:18px;
-    }
-
-    /* right panel */
-    .panel{
-      padding:32px;
-      background:
-        linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.65)),
-        linear-gradient(180deg, rgba(159,122,234,0.04), rgba(43,108,176,0.02));
-      display:flex;
-      flex-direction:column;
-      gap:18px;
-      align-items:stretch;
-    }
-
-    .panel h3{
-      margin:0;
-      font-size:20px;
-      color:#0f172a;
-      font-weight:800;
-    }
-
-    .location{
-      color:var(--muted);
-      font-size:14px;
-    }
-
-    /* details list */
-    .grid{
-      display:grid;
-      grid-template-columns:repeat(2,1fr);
-      gap:12px;
-      margin-top:6px;
-    }
-
-    .info-card{
-      background:rgba(255,255,255,0.7);
-      border-radius:12px;
-      padding:12px;
-      box-shadow: 0 6px 18px rgba(15,23,42,0.03);
-      border:1px solid rgba(15,23,42,0.04);
-    }
-
-    .info-card strong{display:block;font-size:13px;margin-bottom:6px}
-    .info-card span{color:var(--muted);font-size:14px}
-
-    /* RSVP form */
-    form.rsvp{
-      margin-top:6px;
-      display:flex;
-      flex-direction:column;
-      gap:10px;
-      align-items:stretch;
-    }
-
-    input[type="text"], input[type="email"], select, textarea{
-      width:100%;
-      padding:10px 12px;
-      border-radius:10px;
-      border:1px solid rgba(15,23,42,0.08);
-      background:rgba(255,255,255,0.9);
-      font-size:14px;
-      outline:none;
-    }
-
-    textarea{min-height:90px;resize:vertical}
-
-    .btn-row{
-      display:flex;
-      gap:10px;
-      margin-top:6px;
-    }
-
-    button.primary{
-      background:linear-gradient(90deg,var(--accent),var(--accent-2));
-      color:white;
-      padding:10px 14px;
-      border-radius:10px;
-      border:0;
-      font-weight:700;
-      cursor:pointer;
-      flex:1;
-      box-shadow: 0 8px 20px rgba(43,108,176,0.12);
-    }
-
-    button.ghost{
-      background:transparent;
-      border:1px solid rgba(15,23,42,0.08);
-      padding:10px 14px;
-      border-radius:10px;
-      cursor:pointer;
-      flex:1;
-    }
-
-    .note{
-      font-size:13px;
-      color:var(--muted);
-      margin-top:6px;
-    }
-
-    /* tiny admin download link */
-    .download {
-      text-align:center;
-      margin-top:6px;
-      font-size:13px;
-    }
-    .download a{color:var(--accent); text-decoration:none; font-weight:600}
-
-    /* footer */
-    .footer{
-      margin-top:auto;
-      font-size:13px;
-      color:var(--muted);
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:10px;
-    }
-
-    .socials{display:flex; gap:10px}
-    .socials a{color:var(--muted); text-decoration:none; font-weight:700}
-
-    /* responsive */
-    @media (max-width:980px){
-      .wrap{grid-template-columns:1fr}
-      .hero{padding:28px}
-      .couple-photo{position:relative; right:auto; bottom:auto; margin-top:18px; width:140px; height:140px}
-      p.lead{max-width:100%}
-    }
-
-    @media (max-width:480px){
-      h1{font-size:28px}
-      .badge{font-size:13px}
-      .grid{grid-template-columns:1fr}
-    }
-  </style>
+  /* Glow on hover */
+  .time-circle:hover {
+    box-shadow: 0 0 15px #86B0BD, 0 0 25px #f39c12;
+    transform: scale(1.1);
+  }
+</style>
 </head>
-
 <body>
-  <div class="wrap" id="invite-root">
+  <table class="container">
+    <!-- Header Image -->
+    <tr>
+      <td class="center" style="background-image:url('https://tlr.stripocdn.email/content/guids/CABINET_3c616dc5e0465fef7cdda45e7e52d6ed/images/jonathanborba2iim1rmju8unsplash_1.jpeg'); background-size:cover; height:300px;">
+        &nbsp;
+      </td>
+    </tr>
 
-    <!-- HERO / LEFT -->
-    <section class="hero" aria-labelledby="title">
-      <div class="orbit" aria-hidden="true"></div>
+    <!-- "Are Getting Married" -->
+    <tr>
+      <td class="center" style="padding: 20px;">
+        <h3>Are Getting Married</h3>
+      </td>
+    </tr>
 
-      <div style="display:flex;gap:14px;align-items:center;">
-        <div class="badge">You're invited</div>
-        <div style="font-size:13px;color:var(--muted);margin-left:auto">Hosted by Jonny &amp; Siri</div>
-      </div>
+    <!-- Couple Names -->
+    <tr>
+      <td class="center" style="padding: 20px;">
+        <table class="two-column">
+          <tr>
+            <td class="center">
+              <h2>Krishna</h2>
+              <!--<p>Butler</p>-->
+            </td>
+            <td class="center">
+              <img src="https://tlr.stripocdn.email/content/guids/CABINET_3c616dc5e0465fef7cdda45e7e52d6ed/images/mask_group_dNR.png" width="100">
+            </td>
+            <td class="center">
+              <h2>Radha</h2>
+              <!--<p>Quinn</p>-->
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
 
-      <h1 id="title">Jonny <span style="color:var(--accent-2)">♥</span> Siri</h1>
+    <!-- Date -->
+    <tr>
+      <td class="center" style="padding: 20px;">
+        <h1>10</h1>
+        <p>Aug • 2025</p>
+      </td>
+    </tr>
 
-      <p class="lead">
-        We’re getting engaged! Please join us to celebrate our new chapter — good food, great vibes, and your presence means the world.
-      </p>
+    <!-- "How We Met" Section -->
+    <tr>
+      <td class="center" style="padding: 20px;">
+        <h2>How we met</h2>
+        <p style="font-size:12px;">2025 • 09 • 01</p>
+        <p>It all started in a bustling chai stall on MG Road, with the aroma of masala chai filling the air. Amid laughter, shared stories, and endless cups of tea, our journey together began. From that day, life has been a beautiful mix of festivals, colors, and endless love</p>
+      </td>
+    </tr>
 
-      <div class="date" role="list">
-        <div class="meta" role="listitem">Sat • 21 Jun 2026</div>
-        <div class="meta" role="listitem">6:00 PM</div>
-        <div style="color:var(--muted);font-size:14px;margin-left:10px">Garden Terrace, Blue Hill</div>
-      </div>
+    <!-- "Proposal" Section -->
+    <tr>
+      <td class="center" style="padding: 20px;">
+        <h2>The Proposal</h2>
+        <p style="font-size:12px;">2025 • 09 • 09</p>
+        <p>Under the twinkling lights of Diwali, amidst the scent of marigolds and incense, a moment forever etched in our hearts unfolded. With folded hands and a shy smile, one asked, and the other said yes—promising a lifetime of laughter, love, and endless chai together.</p>
+      </td>
+    </tr>
 
-      <div class="couple-photo" aria-hidden="true">
-        <!-- replace with <img src="..." alt="Jonny & Siri" class="photo" /> if you have an image -->
-        J &amp; S
-      </div>
-    </section>
+    <!-- Countdown Timer / Waiting -->
+<tr>
+  <td class="center" style="padding: 20px;">
+    <h2>Waiting for You</h2>
+    <div id="countdown" style="display: flex; justify-content: center; gap: 15px; margin-top: 20px;"></div>
+  </td>
+</tr>
 
-    <!-- PANEL / RIGHT -->
-    <aside class="panel" aria-labelledby="panelTitle">
-      <h3 id="panelTitle">Event Details & RSVP</h3>
-      <div class="location">Blue Hill — 121 Ocean View Rd, Cityname</div>
+    <!-- Footer -->
+<tr>
+  <td class="center" style="padding: 20px;">
+    <p>For more details about the wedding, accommodations, or RSVP, please visit our wedding website at:</p>
+    <h3><a href="https://www.google.com/search?q=Bay+Leaf+Resort%2C+A+Beach+Road+Beside+Zoo+Back+Gate+Ocean+Drive%2C+Sagar+Nagar%2C+Visakhapatnam%2C+Andhra+Pradesh+530045&oq=Bay+Leaf+Resort%2C+A+Beach+Road+Beside+Zoo+Back+Gate+Ocean+Drive%2C+Sagar+Nagar%2C+Visakhapatnam%2C+Andhra+Pradesh+530045&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQRRg80gEHOTQ2ajBqN6gCCLACAfEFtI5t9Z5CSrA&sourceid=chrome&ie=UTF-8" style="text-decoration:none;">Google Maps</a></h3>
+    
+    <p>Or contact us directly:</p>
+    <p>📞 +91 98485 57252</p>
+    <p>📞 +91 92477 13338</p>
 
-      <div class="grid" aria-hidden="false">
-        <div class="info-card">
-          <strong>Dress Code</strong>
-          <span>Smart Casual</span>
-        </div>
-        <div class="info-card">
-          <strong>Kids</strong>
-          <span>Welcome — family table</span>
-        </div>
-        <div class="info-card">
-          <strong>Parking</strong>
-          <span>Free parking next to venue</span>
-        </div>
-        <div class="info-card">
-          <strong>Registry</strong>
-          <span>Gifts not required — link on the final page</span>
-        </div>
-      </div>
+    <p style="font-weight:500;">📍 <strong>Bay Leaf Resort,</strong><br>
+       Beach Road, Beside Zoo Back Gate, Ocean Drive,<br>
+       Sagar Nagar, Visakhapatnam, Andhra Pradesh 530045
+    </p>
+  </td>
+</tr>
 
-      <!-- RSVP FORM (uses mailto fallback) -->
-      <form class="rsvp" id="rsvpForm" onsubmit="return handleRsvp(event)">
-        <input type="text" id="name" placeholder="Your full name" required autocomplete="name" />
-        <input type="email" id="email" placeholder="Your email (so we can confirm)" required autocomplete="email" />
-        <label style="font-size:13px;color:var(--muted);">Will you attend?</label>
-        <select id="attending" required>
-          <option value="">Select</option>
-          <option value="Yes">Yes — I'll be there</option>
-          <option value="No">Sadly no</option>
-          <option value="Maybe">Maybe</option>
-        </select>
 
-        <textarea id="message" placeholder="Message / dietary needs (optional)"></textarea>
-
-        <div class="btn-row">
-          <button type="submit" class="primary">Send RSVP</button>
-          <button type="button" class="ghost" onclick="copyShare()">Copy Invite Link</button>
-        </div>
-
-        <div class="note">Tip: The RSVP opens your email. If you prefer, copy the page link and reply later.</div>
-      </form>
-
-      <div class="download" id="downloadWrap" style="display:none">
-        <div style="margin-top:8px;color:var(--muted)">
-          Host note — <a id="downloadLink" href="#">download RSVPs (CSV)</a>
-        </div>
-      </div>
-
-      <div class="footer" role="contentinfo">
-        <div class="socials" aria-hidden="true">
-          <a href="#" title="Instagram">IG</a>
-          <a href="#" title="Facebook">FB</a>
-        </div>
-        <div style="text-align:right;color:var(--muted);font-size:13px">
-          <div>Questions? <a href="mailto:host@example.com">host@example.com</a></div>
-        </div>
-      </div>
-    </aside>
-  </div>
-
-  <script>
-    // === Config: change these to personalize ===
-    const HOST_EMAIL = "host@example.com"; // replace with your email (for mailto send)
-    const SITE_URL = "https://jonnysiriinvitation.com"; // update after you publish
-    const RSVP_STORAGE_KEY = "j_s_rsvps_v1";
-
-    // Handle RSVP: open mail client with prefilled message,
-    // and also store entry in localStorage so the host can download CSV later.
-    function handleRsvp(e){
-      e.preventDefault();
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const attending = document.getElementById('attending').value;
-      const message = document.getElementById('message').value.trim();
-
-      if(!name || !email || !attending){
-        alert("Please fill name, email and attendance.");
-        return false;
-      }
-
-      // store locally (for host to download)
-      const now = new Date().toISOString();
-      const entry = {name, email, attending, message, time: now};
-      try {
-        const existing = JSON.parse(localStorage.getItem(RSVP_STORAGE_KEY) || "[]");
-        existing.push(entry);
-        localStorage.setItem(RSVP_STORAGE_KEY, JSON.stringify(existing));
-        // show download link for host
-        document.getElementById('downloadWrap').style.display = "block";
-        document.getElementById('downloadLink').href = makeCsvDataUrl(existing);
-        document.getElementById('downloadLink').download = "rsvps.csv";
-      } catch(err){
-        console.warn("localStorage error", err);
-      }
-
-      // prepare mailto fallback
-      const subject = encodeURIComponent("RSVP: " + name + " — " + attending);
-      let body = "";
-      body += "Name: " + name + "%0D%0A";
-      body += "Email: " + email + "%0D%0A";
-      body += "Attending: " + attending + "%0D%0A";
-      if(message) body += "Note: " + message + "%0D%0A";
-      body += "%0D%0A";
-      body += "Sent from: " + SITE_URL;
-
-      // open mail client
-      const mailto = "mailto:" + encodeURIComponent(HOST_EMAIL) + "?subject=" + subject + "&body=" + body;
-      window.location.href = mailto;
-
-      // optional: show a nice confirmation UI
-      alert("Thanks! Your RSVP was added and your mail client should open. If it doesn't, please email " + HOST_EMAIL);
-      return false;
-    }
-
-    // Convert stored RSVP array to CSV data URL
-    function makeCsvDataUrl(arr){
-      const header = ["name","email","attending","message","time"];
-      const rows = arr.map(r => header.map(h => {
-        const v = (r[h] ?? "").toString().replace(/"/g,'""');
-        return '"' + v + '"';
-      }).join(","));
-      const csv = [header.join(","), ...rows].join("\n");
-      return "data:text/csv;charset=utf-8,%EF%BB%BF" + encodeURIComponent(csv);
-    }
-
-    // copy invite link to clipboard
-    function copyShare(){
-      const url = SITE_URL || window.location.href;
-      navigator.clipboard?.writeText(url).then(() => {
-        alert("Invite link copied! Paste it anywhere to share.");
-      }).catch(() => {
-        prompt("Copy this link:", url);
-      });
-    }
-
-    // If localStorage already has RSVPs, prepare download link on load
-    (function init(){
-      try {
-        const existing = JSON.parse(localStorage.getItem(RSVP_STORAGE_KEY) || "[]");
-        if(existing.length > 0){
-          document.getElementById('downloadWrap').style.display = "block";
-          document.getElementById('downloadLink').href = makeCsvDataUrl(existing);
-          document.getElementById('downloadLink').download = "rsvps.csv";
-        }
-      } catch(err){}
-    })();
-  </script>
+  </table>
 </body>
+<script>
+  const engagementDate = new Date("2025-11-08T00:00:00").getTime();
+
+  function updateCountdown() {
+    const now = new Date().getTime();
+    const distance = engagementDate - now;
+
+    if(distance < 0){
+      document.getElementById("countdown").innerHTML = "We are Married!";
+      clearInterval(timer);
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("countdown").innerHTML = `
+      <div class="time-circle"><span>${days}</span><div class="label">Days</div></div>
+      <div class="time-circle"><span>${hours}</span><div class="label">Hours</div></div>
+      <div class="time-circle"><span>${minutes}</span><div class="label">Minutes</div></div>
+      <div class="time-circle"><span>${seconds}</span><div class="label">Seconds</div></div>
+    `;
+  }
+
+  const timer = setInterval(updateCountdown, 1000);
+  updateCountdown();
+</script>
+
 </html>
